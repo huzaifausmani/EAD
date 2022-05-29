@@ -1,0 +1,36 @@
+@model webapp.Models.Student
+
+@{
+    ViewData["Title"] = "Student Update";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<form method="post" action="/Student/update">
+
+    <label asp-for="Sid"></label>
+    <input asp-for="Sid" id="sid" readonly/><br/>
+    <span asp-validation-for="Sid"></span><br/>                @*viewing model validation. *@
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" id="name"/><br/>
+    <span asp-validation-for="Name"></span><br/>                @*viewing model validation. *@
+    
+    <label asp-for="Age"></label>
+    <input asp-for="Age" id="age"/><br/>
+    <span asp-validation-for="Age"></span><br/>                @*viewing model validation. *@
+    
+    <label asp-for="CGPA"></label>
+    <input asp-for="CGPA" id="cgpa"/><br/>
+    <span asp-validation-for="CGPA"></span><br/>               @*viewing model validation. *@
+    
+    <label asp-for="Semester"></label>
+    <input asp-for="Semester" id="semester"/><br/>
+    <span asp-validation-for="Semester"></span><br/>                @*viewing model validation. *@
+    
+    <input type="submit" value="Update Student">
+</form>

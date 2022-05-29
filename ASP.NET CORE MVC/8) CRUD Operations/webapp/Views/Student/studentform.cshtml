@@ -1,0 +1,53 @@
+@model webapp.Models.Student
+
+
+@{
+    ViewData["Title"] = "Student Form";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h1 class="display-4 text-center">Welcome</h1>
+
+@*<div asp-validation-summary="All"></div>              //viewing model validation. *@
+
+<div asp-validation-summary="ModelOnly"></div>                @*viewing model Error. *@
+
+<form method="post" action="/Student/studentform">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" id="name"/><br/>
+    <span asp-validation-for="Name"></span><br/>                @*viewing model validation. *@
+    
+    <label asp-for="Age"></label>
+    <input asp-for="Age" id="age"/><br/>
+    <span asp-validation-for="Age"></span><br/>                @*viewing model validation. *@
+    
+    <label asp-for="CGPA"></label>
+    <input asp-for="CGPA" id="cgpa"/><br/>
+    <span asp-validation-for="CGPA"></span><br/>               @*viewing model validation. *@
+    
+    <label asp-for="Semester"></label>
+    <input asp-for="Semester" id="semester"/><br/>
+    <span asp-validation-for="Semester"></span><br/>                @*viewing model validation. *@
+    
+    <input type="submit" value="Save Student">
+</form>
+
+
+@if(ViewBag.show!=null)
+{
+    @if(ViewBag.show=="Student added")
+    {
+        <br/>
+        <div class="alert alert-success" role="alert">@ViewBag.show</div>
+    }
+    else
+    {
+        <br/>
+        <div class="alert alert-danger" role="alert">@ViewBag.show</div>
+    }
+}
+
+
+
+<p>Click <a asp-controller="student" asp-action="studentdata">here</a> to view all students.</p>

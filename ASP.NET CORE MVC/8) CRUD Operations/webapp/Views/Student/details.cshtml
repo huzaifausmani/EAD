@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Student details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+
+@if(Model !=null)
+{
+    <h1>Detailed view of student</h1>
+    <p>Name: @Model.Name</p>
+    <p>Age: @Model.Age</p>
+    <p>CGPA: @Model.CGPA</p>
+    <p>Semester: @Model.Semester</p>
+}
+
+
+<p>Click <a asp-controller="student" asp-action="studentdata">here</a> to view all students.</p>
