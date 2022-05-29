@@ -1,0 +1,86 @@
+----------------------------------------------------------MODEL VALIDATION-------------------------------------------------------------------
+It's a server side validation method used to validate input data.
+Javascript is the other method used to validate data at client side.
+
+[Required(ErrorMessage ="Password is Required.")]
+[Compare("Password", ErrorMessage = "Password Must Match")]   //used to confirm password
+[StringLength(8, ErrorMessage = "Password length can't be more than 8.")]
+[StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
+[Display(Name = "Enter your name")]
+[Phone]                         //used for validation of phone nuumbers.
+[EmailAddress]                  //used for validation of email.
+[DataType(DataType.Password)]   //used to hide password like ..........
+[DataType(DataType.Date)]
+[Range(0, 999.99)]
+
+links to explore more about model validation in asp.net core
+(
+    https://docs.microsoft.com/en-us/aspnet/core/mvc/models/validation,     
+    https://www.completecsharptutorial.com/asp-net-mvc5/html-password-example-aspnet-mvc5.php,
+    https://asp.mvc-tutorial.com/tag-helpers/the-input-tag-helper/
+);
+
+STEPS:
+---------------------------------------------------------------Step 1-------------------------------------------------------------------------
+    using System.ComponentModel.DataAnnotations;              //use this namespace in model classes.
+    public class Person
+    {
+        [Required(ErrorMessage ="Password is Required.")]      //define model validation for all proper
+        public int? Age { get; set; }      //? allows values to be nullablle to show error.
+
+        [Required(ErrorMessage ="Name is required.")]
+        [Display(Name = "Enter your name")]
+        [StringLength(50, ErrorMessage = "Name length can't be more than 50.")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage ="Age is Required.")]
+        [Display(Name = "Enter your age")]
+        [Range(0, 100)]
+        public int? Age { get; set; }                    //? allows nullable
+
+        [Required(ErrorMessage ="CGPA is Required.")]
+        [Display(Name = "Enter your cgpa")]
+        [Range(0, 4.00)]
+        public float? CGPA { get; set; }                  //? allows nullable
+
+        [Required(ErrorMessage ="Semester is Required.")]
+        [Display(Name = "Enter your semester")]
+        [StringLength(20, ErrorMessage = "Semester length can't be more than 20.")]
+        public string Semester { get; set; }
+    }
+
+---------------------------------------------------------------Step 2-------------------------------------------------------------------------
+    [HttpPost]
+    public IActionResult studentform(Student s)
+    {
+        if(ModelState.IsValid)                   // using model validation.
+        {
+            SIList.AddStudent(s);
+            return View("studentform",s);
+        }
+        else
+        {
+            ModelState.AddModelError(string.Empty,"Please enter correct data");                   //defined Model Error
+            return View();
+        }
+    }
+
+---------------------------------------------------------------Step 3-------------------------------------------------------------------------
+
+    <div asp-validation-summary="All"></div>                       //viewing model validation.
+    //<div asp-validation-summary="ModelOnly"></div>                //viewing model Error.
+    <form method="post" action="/Student/studentform">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" id="name"/><br/>
+        <span asp-validation-for="Name"></span>                //viewing model validation.
+        <label asp-for="Age"></label>
+        <input asp-for="Age" id="age"/><br/>
+        <span asp-validation-for="Age"></span>                //viewing model validation.
+        <label asp-for="CGPA"></label>
+        <input asp-for="CGPA" id="cgpa"/><br/>
+        <span asp-validation-for="CGPA"></span>                //viewing model validation.
+        <label asp-for="Semester"></label>
+        <input asp-for="Semester" id="semester"/><br/>
+        <span asp-validation-for="Semester"></span>                //viewing model validation.      
+        <input type="submit" value="Save Student">
+    </form>

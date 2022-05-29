@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string s="Data sent by model by using variable defined in view";
+    ViewBag.y="Data from ViewBag defined in view.";
+    ViewData["data2"] = "Data from ViewData defined in view.";   //can't define ViewData["y"] because ViewBag is defined for y.
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <partial name="_PartialView" model="Model">
+    <partial name="_PartialView" model="s">
+</div>

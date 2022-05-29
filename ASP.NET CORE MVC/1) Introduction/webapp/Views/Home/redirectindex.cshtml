@@ -1,0 +1,17 @@
+@{
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Ridirected to Home";
+}
+
+<h1> @ViewData["Title"] </h1>
+@if (Model!=null)
+{
+    <h2>@Model</h2>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to redirected home</h1>
+</div>

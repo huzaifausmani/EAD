@@ -1,0 +1,42 @@
+Partial Views are used to:
+1) reduce redundency(duplication) of code.
+2) can be reused in any view by calling.
+
+2 ways to call partial views in Views:
+<partial name="_PartialView" model="Model">     //Model sent from Controller
+<partial name="_PartialView" model="s">         //s is Model defined in View
+
+
+---------------------------------------------------------Point to ponder----------------------------------------------------------------
+We can't define ViewBag and ViewData with same key. If we do then ViewData with that key will be called.
+                                                     
+                                                      (1)
+For example:
+if:
+@{
+    ViewData["x"] = "Data from ViewData.";
+    ViewBag.x = "Data from ViewBag.";
+}
+
+and we do:
+<p>@ViewData["x"]</p>
+<p>@ViewBag.x</p>
+
+then output will be:
+Data from ViewData.
+Data from ViewData.
+
+                                                        (2)
+if:
+@{
+    ViewData["x"] = "Data from ViewData.";
+    ViewBag.y = "Data from ViewBag.";
+}
+
+and we do:
+<p>@ViewData["x"]</p>
+<p>@ViewBag.y</p>
+
+then output will be:
+Data from ViewData.
+Data from ViewBag.

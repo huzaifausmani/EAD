@@ -1,0 +1,3 @@
+{"Name":"Abbas","Age":15,"Address":"Lahore"}
+{"Name":"Ali","Age":15,"Address":"Lahore"}
+{"Name":"Hassan","Age":15,"Address":"Lahore"}

@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Instructor Form";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form method="post" action="/Student/instructorform">
+        <label>Name: </label>
+        <input type="text" id="name" name="name" required/><br/>
+        <label>Subject: </label>
+        <input type="text" id="subject" name="subject" required/><br/>
+
+        <input type="submit" value="Save Instructor">
+    </form>
+</div>
+
+@if(Model !=null)
+{
+    <h1>Data you entered</h1>
+    <p>Name: @Model.Name</p>
+    <p>Subject: @Model.Subject</p>
+}
+
+<p>Click <a asp-controller="student" asp-action="instructordata">here</a> to view all instructors.</p>

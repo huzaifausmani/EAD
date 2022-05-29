@@ -1,0 +1,35 @@
+@model webapp.Models.Student
+
+
+@{
+    ViewData["Title"] = "Student Form";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form method="post" action="/Student/studentform">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" id="name" required/><br/>
+        <label asp-for="Age"></label>
+        <input asp-for="Age" id="age" required/><br/>
+        <label asp-for="CGPA"></label>
+        <input asp-for="CGPA" id="cgpa" required/><br/>
+        <label asp-for="Semester"></label>
+        <input asp-for="Semester" id="semester" required/><br/>
+        
+        <input type="submit" value="Save Student">
+    </form>
+</div>
+
+@if(Model !=null)
+{
+    <h1>Data you entered</h1>
+    <p>Name: @Model.Name</p>
+    <p>Age: @Model.Age</p>
+    <p>CGPA: @Model.CGPA</p>
+    <p>Semester: @Model.Semester</p>
+}
+
+<p>Click <a asp-controller="student" asp-action="studentdata">here</a> to view all students.</p>

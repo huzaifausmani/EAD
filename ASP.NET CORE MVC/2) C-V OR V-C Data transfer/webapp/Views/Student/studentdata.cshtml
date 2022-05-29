@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Student Data";
+}
+
+@model List<webapp.Models.Student>
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<h2 class="text-center">Data for student</h2>
+<table border="2">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>CGPA</th>
+            <th>Semester</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.CGPA</td>
+                <td>@item.Semester</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h1>@ViewBag.x</h1>
+<h1>@ViewData["data"]</h1>
