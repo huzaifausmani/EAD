@@ -1,0 +1,16 @@
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.csprojAssemblyReference.cache
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.AssemblyInfoInputs.cache
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.AssemblyInfo.cs
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.exe
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.deps.json
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.runtimeconfig.json
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.runtimeconfig.dev.json
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.dll
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\ref\smtp.dll
+C:\Users\DELL\Desktop\smtp\bin\Debug\net5.0\smtp.pdb
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.dll
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\ref\smtp.dll
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.pdb
+C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.genruntimeconfig.cache
