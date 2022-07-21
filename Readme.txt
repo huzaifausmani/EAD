@@ -62,7 +62,7 @@ else
 	USE AUX                                                        //TO CONNECT TO THE DATABASE NAMED AUXI
 	GO	
 	
-	SELECT TABLE_NAME FROM AUXI.INFORMATION_SCHEMA.TABLES;         //TO SHOW TABLES IN THAT DB.
+	SELECT TABLE_NAME FROM AUX.INFORMATION_SCHEMA.TABLES;          //TO SHOW TABLES IN THAT DB.
 	GO
 
 	SELECT * FROM USERS;                                           //EXECUTE QUERY
