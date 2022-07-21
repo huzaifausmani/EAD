@@ -42,4 +42,31 @@ Use this connection string.
 string constr = @"Server=localhost\SQLEXPRESS;Database=aux;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
 Replace Database name in above connection string with the one you just created.
 
+
+------------------------------------------sql server on command line------------------------------------------
+if(password_protected)
+{
+	sqlcmd -S localhost\SQLEXPRESS -U AUX
+	password>........
+}
+else
+{
+	sqlcmd -S localhost\SQLEXPRESS
+
+	SELECT DB_NAME()                                               //TO CHECK CURRENT CONNECTED DB
+	GO
+
+	SELECT NAME FROM SYS.DATABASES                                 //TO SEE ALL DATABASES
+	GO
+
+	USE AUX                                                        //TO CONNECT TO THE DATABASE NAMED AUXI
+	GO	
+	
+	SELECT TABLE_NAME FROM AUXI.INFORMATION_SCHEMA.TABLES;         //TO SHOW TABLES IN THAT DB.
+	GO
+
+	SELECT * FROM USERS;                                           //EXECUTE QUERY
+	GO
+}
+
 Enjoy :)
