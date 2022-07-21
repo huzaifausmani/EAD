@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\webapp\\webapp.csproj": {}
+    "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\1) Introduction\\webapp\\webapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\webapp\\webapp.csproj": {
+    "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\1) Introduction\\webapp\\webapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\webapp\\webapp.csproj",
+        "projectUniqueName": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\1) Introduction\\webapp\\webapp.csproj",
         "projectName": "webapp",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\webapp\\webapp.csproj",
+        "projectPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\1) Introduction\\webapp\\webapp.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\webapp\\obj\\",
+        "outputPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\1) Introduction\\webapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
