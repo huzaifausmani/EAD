@@ -153,36 +153,49 @@ namespace webapp.Models
                 return false;
             }
         }
+        public bool IsFloatOrInt(string value)
+        {
+            int intValue;
+            float floatValue;
+            return Int32.TryParse(value, out intValue) || float.TryParse(value, out floatValue);
+        }
         public bool updateStudent(Student s)
         {
-            string constr = @"Server=localhost\SQLEXPRESS;Database=course;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
-            SqlConnection con = new SqlConnection(constr);
-            con.Open();
-
-            
-            SqlParameter p1 =new SqlParameter("N",s.Name);
-            SqlParameter p2 =new SqlParameter("A",s.Age);
-            SqlParameter p3 =new SqlParameter("C",s.CGPA);
-            SqlParameter p4 =new SqlParameter("S",s.Semester);
-            SqlParameter p5 =new SqlParameter("I",s.Sid);
-            string querry = $"UPDATE Student SET name = @N, age=@A,cgpa=@C,semester=@S WHERE sid = @I";
-            SqlCommand cmd = new SqlCommand(querry,con);
-            cmd.Parameters.Add(p1);
-            cmd.Parameters.Add(p2);
-            cmd.Parameters.Add(p3);
-            cmd.Parameters.Add(p4);
-            cmd.Parameters.Add(p5);
-
-            int count = cmd.ExecuteNonQuery();
-            if (count>=1)
+            if(!IsFloatOrInt(s.Age.ToString()) || !IsFloatOrInt(s.CGPA.ToString()))
             {
-                con.Close();
-                return true;
+                return false;
             }
             else
             {
-                con.Close();
-                return false;
+                string constr = @"Server=localhost\SQLEXPRESS;Database=course;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;";
+                SqlConnection con = new SqlConnection(constr);
+                con.Open();
+
+                
+                SqlParameter p1 =new SqlParameter("N",s.Name);
+                SqlParameter p2 =new SqlParameter("A",s.Age);
+                SqlParameter p3 =new SqlParameter("C",s.CGPA);
+                SqlParameter p4 =new SqlParameter("S",s.Semester);
+                SqlParameter p5 =new SqlParameter("I",s.Sid);
+                string querry = $"UPDATE Student SET name = @N, age=@A,cgpa=@C,semester=@S WHERE sid = @I";
+                SqlCommand cmd = new SqlCommand(querry,con);
+                cmd.Parameters.Add(p1);
+                cmd.Parameters.Add(p2);
+                cmd.Parameters.Add(p3);
+                cmd.Parameters.Add(p4);
+                cmd.Parameters.Add(p5);
+
+                int count = cmd.ExecuteNonQuery();
+                if (count>=1)
+                {
+                    con.Close();
+                    return true;
+                }
+                else
+                {
+                    con.Close();
+                    return false;
+                }
             }
         }
     }
