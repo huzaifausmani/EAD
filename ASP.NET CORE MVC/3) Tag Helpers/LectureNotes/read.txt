@@ -1,0 +1,31 @@
+step 1)
+
+in> Views/_ViewImports.cshtml
+
+@using webapp
+@using webapp.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+step 2)
+//asp-for="Name" in all forms
+<form method="post" action="/Student/studentform">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" id="name" required/><br/>
+    <label asp-for="Age"></label>
+    <input asp-for="Age" id="age" required/><br/>
+    <label asp-for="CGPA"></label>
+    <input asp-for="CGPA" id="cgpa" required/><br/>
+    <label asp-for="Semester"></label>
+    <input asp-for="Semester" id="semester" required/><br/>
+    
+    <input type="submit" value="Save Student">
+</form>
+<p>Click <a asp-controller="student" asp-action="studentdata">here</a> to view all students.</p>
+
+step 3)
+[HttpPost]
+public IActionResult studentform(Student s)
+{
+    SIList.AddStudent(s);
+    return View("studentform",s);
+}

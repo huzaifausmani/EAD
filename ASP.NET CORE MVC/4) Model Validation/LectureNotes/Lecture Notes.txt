@@ -1,6 +1,6 @@
 ----------------------------------------------------------MODEL VALIDATION-------------------------------------------------------------------
 It's a server side validation method used to validate input data.
-Javascript is the other method used to validate data at client side.
+Javascript or jQuery is the other method used to validate data at client side.
 
 [Required(ErrorMessage ="Password is Required.")]
 [Compare("Password", ErrorMessage = "Password Must Match")]   //used to confirm password
@@ -67,8 +67,8 @@ STEPS:
 
 ---------------------------------------------------------------Step 3-------------------------------------------------------------------------
 
-    <div asp-validation-summary="All"></div>                       //viewing model validation.
-    //<div asp-validation-summary="ModelOnly"></div>                //viewing model Error.
+    //<div asp-validation-summary="All"></div>                    //viewing model validation.
+    <div asp-validation-summary="ModelOnly"></div>                //viewing model Error.
     <form method="post" action="/Student/studentform">
         <label asp-for="Name"></label>
         <input asp-for="Name" id="name"/><br/>
