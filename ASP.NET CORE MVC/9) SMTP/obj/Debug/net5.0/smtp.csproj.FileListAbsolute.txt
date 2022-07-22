@@ -14,3 +14,19 @@ C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.dll
 C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\ref\smtp.dll
 C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.pdb
 C:\Users\DELL\Desktop\smtp\obj\Debug\net5.0\smtp.genruntimeconfig.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.exe
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.deps.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.runtimeconfig.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.runtimeconfig.dev.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\ref\smtp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\bin\Debug\net5.0\smtp.pdb
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.csprojAssemblyReference.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.GeneratedMSBuildEditorConfig.editorconfig
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.AssemblyInfoInputs.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.AssemblyInfo.cs
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.csproj.CoreCompileInputs.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\ref\smtp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.pdb
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\9) SMTP\obj\Debug\net5.0\smtp.genruntimeconfig.cache

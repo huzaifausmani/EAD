@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\smtp\\smtp.csproj": {}
+    "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\9) SMTP\\smtp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\smtp\\smtp.csproj": {
+    "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\9) SMTP\\smtp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\smtp\\smtp.csproj",
+        "projectUniqueName": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\9) SMTP\\smtp.csproj",
         "projectName": "smtp",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\smtp\\smtp.csproj",
+        "projectPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\9) SMTP\\smtp.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\smtp\\obj\\",
+        "outputPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\9) SMTP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,0 +1,34 @@
+@model List<videofiles.Models.video>
+
+@{
+    ViewData["Title"] = "Delete Files";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Select file to delete:</p>
+
+<form method="post" action="/Home/deletefiles" id="delform">
+    <input type="submit" id="subBtn">
+</form>
+
+<br>
+<label>Choose a video to delete: </label>
+<select name="filename" form="delform">
+    @foreach(var item in Model)
+    {
+        <option>@item.Filename</option>
+    }
+</select>
+
+@if(ViewBag.flag != null)
+{
+    @if(ViewBag.flag == true)
+    {
+        <p class="alert alert-success" role="alert"> @ViewBag.Message </p>
+    }
+    else
+    {
+        <p class="alert alert-danger" role="alert">There was an error in query in deleting video.</p>
+    }
+}

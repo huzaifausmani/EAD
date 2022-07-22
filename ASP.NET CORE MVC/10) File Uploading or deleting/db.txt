@@ -1,0 +1,6 @@
+CREATE TABLE videos (
+    [vid] INT IDENTITY (1, 1) NOT NULL,
+    [vname] VARCHAR (100) NOT NULL,
+    [vpath] VARCHAR (100) NOT NULL,
+    PRIMARY KEY (vid)
+);

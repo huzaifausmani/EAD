@@ -1,0 +1,76 @@
+@model List<videofiles.Models.video>
+
+@{
+    ViewData["Title"] = "Show Files";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if(Model!=null)
+{
+    @foreach(var item in Model)
+    {
+        <p>@item.Filename</p>
+        @if(item.checkImage($"{@item.Filename}"))
+        {
+            <img src="@Url.Content(@item.Filepath)" width="100%"/>
+        }
+        else
+        {
+            @* <video class="right" controls loop width="100%">
+                <source src="@Url.Content(@item.Filepath)">
+                This browser does not support html5 video.
+            </video> *@
+
+            <div>
+            <script src="https://cdn.radiantmediatechs.com/rmp/5.5.5/js/rmp.min.js"></script>
+            <center>
+                <div>
+                <div id="@item.Filename" style=" width: 100%"></div>
+                    <style> .rmp-logo.rmp-logo{top: 10px;left:0px;width:100px;}</style>
+                </div>
+            </center>
+            <script>
+                (function () {
+                    var src = {
+                        mp4: '@Url.Content(@item.Filepath)'
+                    };
+                    var streamrootConfig = {
+                        type: 'hlsjs',
+                        streamrootKey: 'eWZmZ2d2Y3BrdEAxNTMwNjA22',
+                        dnaConfig: {},
+                    };
+
+                    var settings = {
+                        licenseKey: 'eWZmZ2d2Y3BrdEAxNTMwNjA2',
+                        streamrootConfig: streamrootConfig,
+                        src: src,
+                        // Recommended settings for HLS streaming
+                        hlsJSMaxBufferSize: 0,
+                        hlsJSMaxBufferLength: 30,
+                        hlsJSLiveSyncDuration: 10, // Not needed for VoD streams
+                        forceHlsJSOnMacOSIpadOSSafari: true, //To activate Streamroot on Safari Mac OS. Only from player 5.4.10+.
+                        delayToFade: 1000,
+                        width: 640,
+                        height: 360,
+                        muted: false,
+                        skin: 's3',
+                        isLive: false,
+                        autoplay: false,
+                        poster: 'https://vaderstream.com/gallery_gen//7e0fb809581f441da18098637e1feed0_560x420.png',
+                        preload: 'No',
+                        logo: 'https://logos.textgiraffe.com/logos/logo-name/Raza-designstyle-jungle-m.png',
+                        logoLoc: '#',
+                        logoPosition: 'topleft',
+                        logoWatermark: true,
+                    };
+                    var elementID = '@item.Filename';
+                    var rmp = new RadiantMP(elementID);
+                    rmp.init(settings);
+                })();
+            
+            </script>
+            </div>
+        }
+    }
+}
