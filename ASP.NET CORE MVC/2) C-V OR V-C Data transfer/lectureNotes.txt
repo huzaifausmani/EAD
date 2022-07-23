@@ -1,0 +1,79 @@
+
+There are 3 ways to send data from controller to View.
+1) using ViewBag.x
+2) using ViewData["data"]
+3) using Model.
+
+-----------------------------------Step 1-----------------------------------
+In StudentController.cs :
+public IActionResult studentdata()
+{
+    ViewBag.x="This is data from ViewBag...";
+    ViewData["data"] = "This is data from ViewData....";
+    List<Student> list = SIList.getStudents();
+    return View("studentdata",list);                        //using Model data here.
+}
+
+-----------------------------------Step 2-----------------------------------
+In studentdata.cshtml :
+@model List<webapp.Models.Student>                   //only if we are getting data in the form of Model object or list.
+
+<h1>@ViewBag.x</h1>
+<h1>@ViewData["data"]</h1>
+
+<h2 class="text-center">Data for student</h2>
+<table border="2">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>CGPA</th>
+            <th>Semester</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.CGPA</td>
+                <td>@item.Semester</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+---------------------------------------------------------Point to ponder----------------------------------------------------------------
+We can't define ViewBag and ViewData with same key. If we do then ViewData with that key will be called.
+                                                     
+                                                      (1)
+For example:
+if:
+@{
+    ViewData["x"] = "Data from ViewData.";
+    ViewBag.x = "Data from ViewBag.";
+}
+
+and we do:
+<p>@ViewData["x"]</p>
+<p>@ViewBag.x</p>
+
+then output will be:
+Data from ViewData.
+Data from ViewData.
+
+                                                        (2)
+if:
+@{
+    ViewData["x"] = "Data from ViewData.";
+    ViewBag.y = "Data from ViewBag.";
+}
+
+and we do:
+<p>@ViewData["x"]</p>
+<p>@ViewBag.y</p>
+
+then output will be:
+Data from ViewData.
+Data from ViewBag.

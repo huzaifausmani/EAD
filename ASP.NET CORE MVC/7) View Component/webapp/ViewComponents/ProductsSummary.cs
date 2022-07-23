@@ -9,6 +9,7 @@ namespace webapp.ViewComponents
         public IViewComponentResult Invoke(string p1,int p2)
         {
             string data=$"{p1}'s price is {p2}";
+            ViewBag.color = "Yellow";
             return View("Default",data);
         }
     }
