@@ -1,0 +1,51 @@
+-------------------------------Step 1-------------------------------------
+In HomeController.cs:
+public IActionResult Index()
+{
+    return View("Index","Car");
+}
+-------------------------------Step 2-------------------------------------
+In Index.cshtml:          //2 ways to call ViewComponent
+<div>
+    <h1>Welcome</h1>
+    <vc:weather-summary></vc:weather-summary>
+    <vc:products-summary p1="@Model" p2=2000000></vc:products-summary>
+</div>
+-------------------------------Step 3-------------------------------------
+In ViewComponents >WeatherSummary.cs :
+using System;
+using Microsoft.AspNetCore.Mvc;
+
+namespace webapp.ViewComponents
+{
+    [ViewComponent(Name = "WeatherSummary")]
+    public class WeatherSummary: ViewComponent
+    {
+        public string Invoke()
+        {
+            return "This is weather summary from simple View component that returns just a string.";
+            //returns just a string.
+        }
+    }
+}
+
+In ViewComponents >ProductsSummary.cs :
+using System;
+using Microsoft.AspNetCore.Mvc;
+
+namespace webapp.ViewComponents
+{
+    [ViewComponent(Name = "ProductsSummary")]
+    public class ProductsSummary: ViewComponent
+    {
+        public IViewComponentResult Invoke(string p1,int p2)
+        {
+            string data=$"{p1}'s price is {p2}";
+            return View("Default",data);                                //returns a View.
+        }
+    }
+}
+-------------------------------Step 4-------------------------------------
+In Shared>Components>ProductsSummary>Default.cshtml :
+<h1>This is products view component</h1>
+<p>@Model</p>

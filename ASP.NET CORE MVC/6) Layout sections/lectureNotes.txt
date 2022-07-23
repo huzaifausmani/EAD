@@ -1,0 +1,25 @@
+----------------------------( Layout Section )----------------------------
+
+---------------------------------Step 1---------------------------------
+In any View define a LayoutSection like:
+@section addNewStyling
+{
+    <style>
+        h1
+        {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    </style>
+}
+
+---------------------------------Step 2---------------------------------
+In _Layout.cshtml Render that Section like:
+@if (IsSectionDefined("addNewStyling"))
+{
+    @RenderSection("addNewStyling", required:false)
+}
+else
+{
+    @* do something if you want. *@
+}

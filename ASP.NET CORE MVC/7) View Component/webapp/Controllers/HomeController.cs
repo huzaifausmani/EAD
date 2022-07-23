@@ -20,7 +20,7 @@ namespace webapp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index","Car");
         }
 
         public IActionResult Privacy()

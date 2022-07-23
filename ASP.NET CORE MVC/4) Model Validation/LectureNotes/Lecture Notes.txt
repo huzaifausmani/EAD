@@ -9,7 +9,7 @@ Javascript or jQuery is the other method used to validate data at client side.
 [Display(Name = "Enter your name")]
 [Phone]                         //used for validation of phone nuumbers.
 [EmailAddress]                  //used for validation of email.
-[DataType(DataType.Password)]   //used to hide password like ..........
+[DataType(DataType.Password)]   //used to hide password like..........
 [DataType(DataType.Date)]
 [Range(0, 999.99)]
 

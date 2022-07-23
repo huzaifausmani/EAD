@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Desktop\\6) Layout sections\\webapp\\webapp.csproj",
+      "projectUniqueName": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\6) Layout sections\\webapp\\webapp.csproj",
       "projectName": "webapp",
-      "projectPath": "C:\\Users\\DELL\\Desktop\\6) Layout sections\\webapp\\webapp.csproj",
+      "projectPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\6) Layout sections\\webapp\\webapp.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Desktop\\6) Layout sections\\webapp\\obj\\",
+      "outputPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\6) Layout sections\\webapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
