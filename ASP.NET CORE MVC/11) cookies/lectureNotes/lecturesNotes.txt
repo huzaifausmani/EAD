@@ -1,0 +1,44 @@
+Cookies:
+Cookies are used for State Management.
+
+Why do we need to maintain the state?
+HTTP is a stateless protocol. By default HTTP requests are independent messages that don't retain user values.
+
+To see cookie >Ctrl+shift+i  (inspect)
+>goto Applications
+>see the cookie and metadata(expirytime(session="till browser is open" or setTime),CookieKey,cookieValue)
+
+---------------------------------------Code---------------------------------------
+using Microsoft.AspNetCore.Http;
+public IActionResult Index()
+{
+    string data = String.Empty;
+    if(HttpContext.Request.Cookies.ContainsKey("firstRequest"))  //checking if cookie exists.
+    {
+        //getting cookie
+        string yourLastTime = HttpContext.Request.Cookies["firstRequest"];
+        data = "Welcome Back, Last time you visited: " + yourLastTime;
+
+        //updating cookie
+        HttpContext.Response.Cookies.Delete("firstRequest");
+        CookieOptions option = new CookieOptions();          //for it add using Microsoft.AspNetCore.Http;
+        option.Expires = System.DateTime.Now.AddDays(1);     //Now cookie will expire after a day. if you want cookies to be saved after closing browser as well.
+        HttpContext.Response.Cookies.Append("firstRequest", System.DateTime.Now.ToString(),option);
+    }
+    else
+    {
+        //defining cookie
+        CookieOptions option = new CookieOptions();          //for it add using Microsoft.AspNetCore.Http;
+        option.Expires = System.DateTime.Now.AddDays(1);     //Now cookie will expire after a day. if you want cookies to be saved after closing browser as well.
+        data = "You visited first time. "+System.DateTime.Now.ToString();
+        HttpContext.Response.Cookies.Append("firstRequest", System.DateTime.Now.ToString(),option);
+    }
+    return View("Index",data);
+}
+
+public IActionResult Remove()
+{
+    //removing cookie
+    HttpContext.Response.Cookies.Delete("firstRequest");
+    return View("Index","Cookie Removed");
+}

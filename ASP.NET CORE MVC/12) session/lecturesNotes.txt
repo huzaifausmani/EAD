@@ -1,0 +1,62 @@
+Session:
+Sessions are used for State Management.
+
+Why do we need to maintain the state?
+HTTP is a stateless protocol. By default HTTP requests are independent messages that don't retain user values.
+
+Session by default expires after 20 minutes.
+
+Ctrl+Shift+I> Application> sessionId is set in the form of Cookie(.AspNetCore.Session)
+
+---------------------------------Step 1--------------------------------------
+Add package:
+Microsoft.AspNetCore.Session
+dotnet add package Microsoft.AspNetCore.Session --version 2.2.0
+or get latest from here: https://www.nuget.org/packages/Microsoft.AspNetCore.Session/
+
+
+---------------------------------Step 2--------------------------------------
+In Startup.cs :
+In ConfigureServices(IServiceCollection services)
+add:
+services.AddDistributedMemoryCache();                                      //sessions will be stored in memory
+services.AddSession(p => p.IdleTimeout = TimeSpan.FromMinutes(100));       //session will expire after 100 minutes.
+
+In Configure(IApplicationBuilder app, IWebHostEnvironment env)
+add:
+app.UseSession();
+
+---------------------------------Step 3--------------------------------------
+In HomeController:
+using Microsoft.AspNetCore.Http;
+
+public IActionResult Index()
+{
+    string data = String.Empty;
+    if(HttpContext.Session.Keys.Contains("firstRequest"))  //checking if session exists.
+    {
+        //getting session
+        string yourLastTime = HttpContext.Session.GetString("firstRequest");
+        data = "Welcome Back, Last time you visited: " + yourLastTime;
+
+        //updating session
+        HttpContext.Session.Remove("firstRequest");
+        HttpContext.Session.SetString("firstRequest", System.DateTime.Now.ToString());
+    }
+    else
+    {
+        // defininng session.
+        string now = System.DateTime.Now.ToString();
+        data = "You visited first time. "+now;
+        // HttpContext.Session.SetInt32("intRequest", 12);
+        HttpContext.Session.SetString("firstRequest",now);
+    }
+    return View("Index",data);
+}
+
+public IActionResult Remove()
+{
+    //removing session
+    HttpContext.Session.Remove("firstRequest");
+    return View("Index","Session Removed");
+}
