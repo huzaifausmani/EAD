@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Ajax";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's Ajax.</p>
+
+<div id="put"></div>
+<button id="press" class="btn btn-success" style="margin: 10px;"> Show load magic </button>
+
+<div id="put2"></div>
+<button id="press2" class="btn btn-success" style="margin: 10px;"> Show Ajax magic </button>
+
+@section AjaxScript
+{
+    <script>
+        $("#press").click(function (e) { 
+            e.preventDefault();
+
+            var n = "Hassan Raza";
+
+            $("#put").load("/Home/Ajax", {name:n, age: 22}, function (response, status, request) {
+                //this; // dom element
+            });
+        });
+
+        $("#press2").click(function (e) { 
+            e.preventDefault();
+            
+            $.ajax({
+                type: "POST",
+                url: "/Home/Ajax",
+                data: {name: "Hassan Raza", age: 22},
+                success: function (response) {
+                    $("#put2").html(response);
+                }
+            });
+        });
+    </script>
+}

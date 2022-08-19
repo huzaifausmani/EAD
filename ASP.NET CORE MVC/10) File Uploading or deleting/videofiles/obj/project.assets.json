@@ -2319,11 +2319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\working\\videofiles\\videofiles.csproj",
+      "projectUniqueName": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\10) File Uploading or deleting\\videofiles\\videofiles.csproj",
       "projectName": "videofiles",
-      "projectPath": "D:\\working\\videofiles\\videofiles.csproj",
+      "projectPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\10) File Uploading or deleting\\videofiles\\videofiles.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\working\\videofiles\\obj\\",
+      "outputPath": "D:\\6th semester\\Enterprise Application Development\\EAD\\ASP.NET CORE MVC\\10) File Uploading or deleting\\videofiles\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
