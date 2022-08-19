@@ -20,6 +20,9 @@
             var n = "Hassan Raza";
 
             $("#put").load("/Home/Ajax", {name:n, age: 22}, function (response, status, request) {
+                console.log(response);  
+                console.log(status);
+                console.log(request);
                 //this; // dom element
             });
         });
