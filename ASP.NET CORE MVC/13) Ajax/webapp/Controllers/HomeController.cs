@@ -27,7 +27,8 @@ namespace webapp.Controllers
         {
             return View();
         }
-
+		
+		[HttpGet]
         public IActionResult Ajax()
         {
             return View();

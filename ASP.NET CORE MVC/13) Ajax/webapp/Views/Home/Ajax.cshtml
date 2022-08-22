@@ -14,13 +14,14 @@
 @section AjaxScript
 {
     <script>
+	$(document).ready(function(){
         $("#press").click(function (e) { 
             e.preventDefault();
 
             var n = "Hassan Raza";
 
             $("#put").load("/Home/Ajax", {name:n, age: 22}, function (response, status, request) {
-                console.log(response);    //html string
+                console.log(response);    //html string (PartialView)
                 console.log(status);      //success
                 console.log(request);     //request object {onReadyState: 4,......}
                 //this; // dom element
@@ -29,7 +30,7 @@
 
         $("#press2").click(function (e) { 
             e.preventDefault();
-            
+			
             $.ajax({
                 type: "POST",
                 url: "/Home/Ajax",
@@ -39,5 +40,6 @@
                 }
             });
         });
+	});
     </script>
 }

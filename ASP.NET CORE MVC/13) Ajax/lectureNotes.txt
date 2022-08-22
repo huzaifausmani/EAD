@@ -1,1 +1,132 @@
-https://www.youtube.com/watch?v=HuniMNaWP6U
+------------------------------(1)------------------------------
+Ajax PartialView response:   https://www.youtube.com/watch?v=HuniMNaWP6U
+
+----------HomeController.cs----------
+[HttpGet]
+public IActionResult Ajax()
+{
+	return View();
+}
+[HttpPost]
+public IActionResult Ajax(string name,int age)
+{
+	ViewBag.name=name;
+	ViewData["age"] = age;
+	return PartialView("_Partial");
+}
+
+----------_Partial.cshtml----------
+<div style="background-color:yellow; padding:10px; margin: 0 0 10px 0; box-shadow: 0 0 20px;">
+    <h1>This is Partial View</h1>
+    <p>Name I got using ViewBag: @ViewBag.name</p>
+    <p>Age I got using ViewData: @ViewData["age"]</p>
+</div>
+
+----------Ajax.cshtml----------
+<div id="put"></div>
+<button id="press" class="btn btn-success" style="margin: 10px;"> Show load magic </button>
+
+<div id="put2"></div>
+<button id="press2" class="btn btn-success" style="margin: 10px;"> Show Ajax magic </button>
+
+@section AjaxScript
+{
+    <script>
+        $("#press").click(function (e) { 
+            e.preventDefault();
+
+            var n = "Hassan Raza";
+
+            $("#put").load("/Home/Ajax", {name:n, age: 22}, function (response, status, request) {
+                console.log(response);    //html string
+                console.log(status);      //success
+                console.log(request);     //request object {onReadyState: 4,......}
+                //this; // dom element
+            });
+        });
+
+        $("#press2").click(function (e) { 
+            e.preventDefault();
+            
+            $.ajax({
+                type: "POST",
+                url: "/Home/Ajax",
+                data: {name: "Hassan Raza", age: 22},
+                success: function (response) {
+                    $("#put2").html(response);
+                }
+            });
+        });
+    </script>
+}
+
+----------_Layout.cshtml--------------
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@if (IsSectionDefined("AjaxScript"))
+{
+    @RenderSection("AjaxScript", required:false)
+}
+else
+{
+    @* do something if you want. *@
+}
+
+
+------------------------------(2)------------------------------
+JSON request/response using AJAX:   https://youtu.be/dXutAlml_xE
+
+----------HomeController.cs----------
+[HttpGet]
+public JsonResult GetNames()
+{
+	var names = new string[3]
+	{
+		"Clara",
+		"Marc",
+		"Judy"
+	};
+	
+	return new JsonResult(Ok(names));
+}
+
+[HttpPost]
+public JsonResult PostName(string name)
+{
+	//use name or write into db or whatever you want.
+	return new JsonResult(Ok());
+}
+
+
+----------Ajax.cshtml----------
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type: "GET",
+			url: "@Url.Action("GetNames")",
+			dataType: "json",
+			success: function(result)
+			{
+				console.log(result);
+			}
+			error: function(req,status,error)
+			{
+				console.log(status);
+			}
+		});
+
+		$.ajax({
+			type: "POST",
+			url: "@Url.Action("PostName")",
+			data: {name: "Hassan Raza"},
+			dataType: "json",
+			success: function(result)
+			{
+				console.log(result);
+			}
+			error: function(req,status,error)
+			{
+				console.log(status);
+			}
+		});
+	});
+</script>
