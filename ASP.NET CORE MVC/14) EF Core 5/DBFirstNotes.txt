@@ -6,7 +6,21 @@ step 1) Install nugett packages:
 5) dotnet add package Microsoft.EntityFrameworkCore.Design --version 5.0.10
 6) dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design
 
-Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;" Microsoft.EntityFrameworkCore.SqlServer -Outputdir Models
+
+-------------------vs code------------------------
+
+dotnet ef dbcontext scaffold "Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+Make changes in DB.   (delete column)
+
+dotnet ef dbcontext scaffold "Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
+
+
+
+
+---------------Visual Stdio--------------
+
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;" Microsoft.EntityFrameworkCore.SqlServer -Outputdir Models 
 
 Make changes in DB.   (delete column)
 

@@ -12,3 +12,4 @@ namespace codefirstapproach
             => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
     }
 }
+
