@@ -1,0 +1,56 @@
+1) DBContext (reperents the session with DB. DBSet properties against tables.)
+2) EF Core Provider (converts queries in object to sql queries.)
+3) Database Provider (SQL SERVER, MySql, Oracle) (executes sql queries in DB)
+
+-----------------------------------------Visual Studio CODE-----------------------------------------
+
+Getting started
+https://docs.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
+
+step 1) Install nugett packages:
+1) dotnet tool install --global dotnet-ef
+2) dotnet add package Microsoft.EntityFrameworkCore --version 5.0.10
+3) dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.10 (https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/)
+4) dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.10 (https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools)
+5) dotnet add package Microsoft.EntityFrameworkCore.Design --version 5.0.10
+6) dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design
+
+dotnet ef migrations add InitialCreate         //will create migration folder.
+dotnet ef database update                      //will update db.
+
+-----------------code changes----------------
+comment out Program.cs
+New class Products.cs add properties to it
+New Class ShoppingContext.cs inherited from DBContext 
+    using Microsoft.EntityFrameworkCore;     //add this for DBContext
+
+    public DbSet<Product> Products { get; set; }
+
+    // The following configures EF to create a SqlServer database file in the special "local" folder for your platform.
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=ShoppingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
+    //don't forget to change Database=NewDBName;
+
+
+
+-----------------------------------------Visual Studio-----------------------------------------
+
+
+For visual studio add following nugett packages:
+package: Microsoft.EntityFrameworkCore.SqlServer
+package: Microsoft.EntityFrameworkCore.Tools
+package: Microsoft.EntityFrameworkCore.Design
+
+
+-----------------code changes----------------
+comment out Program.cs
+New class Products.cs add properties to it
+New Class ShoppingContext.cs inherited from DBContext 
+    using Microsoft.EntityFrameworkCore;     //add this for DBContext
+
+    public DbSet<Product> Products { get; set; }
+    
+    // The following configures EF to create a SqlServer database file in the special "local" folder for your platform.
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+        => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MyShopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+    //don't forget to change Initial Catalog=NewDBName;

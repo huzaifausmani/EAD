@@ -1,0 +1,60 @@
+﻿@model AjaxPostRequest.Models.Student;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div asp-validation-summary="All"></div>
+<form id="myForm">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" placeholder="name"></input>
+    <br/>
+    <label asp-for="Age"></label>
+    <input asp-for="Age" placeholder="age"></input>
+    <br/>
+    <input type="submit" value="Use Ajax to show">
+</form>
+
+<div id="show"></div>
+
+@section AjaxScript{
+
+<script>
+    $(document).ready(function () {
+        $("#myForm").submit(function (e) { 
+            e.preventDefault();
+
+            var sendingData = $("#myForm").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/Index",
+                data: sendingData,
+                //dataType: "dataType",
+                //contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+                // when we use .serialize() 
+                // this generates the data in query string format. 
+                // this needs the default contentType 
+                // (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') 
+                // so it is optional, you can remove it
+                success: function (response) {
+                    console.log("Succefully got data.");
+                    console.log(response);
+                    $("#show").html("<p>Name is "+response.name+".</p><p>Age is "+response.age+".</p>");
+                },
+                error: function (response) {
+                    console.log("Unsuccefully got data.");
+                    console.log(response);
+                    $("#show").html("<p>"+response.responseText+"</p>");
+                }
+            });
+        });
+    });
+</script>
+}
+

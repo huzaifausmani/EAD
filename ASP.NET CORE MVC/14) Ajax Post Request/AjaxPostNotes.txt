@@ -1,0 +1,100 @@
+step 1)
+create Model class (Student.cs)
+
+using System.ComponentModel.DataAnnotations;
+namespace AjaxPostRequest.Models
+{
+    public class Student
+    {
+        [Required(ErrorMessage ="Name is Required.")]
+        [Display(Name = "Enter your name")]
+        public string Name { get; set; }
+        [Required(ErrorMessage ="Age is Required.")]
+        [Display(Name = "Enter your age")]
+        public int? Age { get; set; }
+    }
+}
+
+step 2)
+create form:
+
+<div asp-validation-summary="All"></div>
+<form id="myForm">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" placeholder="name"></input>
+    <br/>
+    <label asp-for="Age"></label>
+    <input asp-for="Age" placeholder="age"></input>
+    <br/>
+    <input type="submit" value="Use Ajax to show">
+</form>
+
+step 3)
+create post ajax call:
+
+@section AjaxScript{
+<script>
+    $(document).ready(function () {
+        $("#myForm").submit(function (e) { 
+            e.preventDefault();
+
+            var sendingData = $("#myForm").serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/Index",
+                data: sendingData,
+                //dataType: "dataType",
+                //contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+                // when we use .serialize() 
+                // this generates the data in query string format. 
+                // this needs the default contentType 
+                // (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') 
+                // so it is optional, you can remove it
+                success: function (response) {
+                    console.log("Succefully got data.");
+                    console.log(response);
+                    $("#show").html("<p>"+response.name+"</p><p>"+response.age+"</p>");
+                },
+                error: function (response) {
+                    console.log("Unsuccefully got data.");
+                    console.log(response);
+                    $("#show").html("<p>"+response.responseText+"</p>");
+                }
+            });
+        });
+    });
+</script>
+}
+
+step 4)
+Get data using ajax call in controller and return a response from here.
+
+public IActionResult Index()
+{
+    return View();
+}
+
+[HttpPost]
+public IActionResult Index(Student s)
+{
+    // return View("Index",s);
+
+    if (!ModelState.IsValid)
+        return BadRequest("Enter required fields");
+    //Write your Insert code here;
+    return this.Ok(s);
+}
+
+step 5)
+Use section of AjaxScript in _Layout.cshtml after the ajax declaration.
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@if (IsSectionDefined("AjaxScript"))
+{
+    @RenderSection("AjaxScript", required:false)
+}
+else
+{
+    @* do something if you want. *@
+}

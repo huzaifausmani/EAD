@@ -1,0 +1,166 @@
+step 1)
+dotnet new mvc
+
+step 2)
+Make a model class Employee
+
+namespace RepositoryPattern.Models
+{
+    public class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
+}
+
+step 3)
+create folder named Interfaces in Models and Interface to it.
+namespace RepositoryPattern.Models.Interfaces
+{
+    public interface IEmployee
+    {
+        public List<Employee> GetAllEmployee();       //Implementation will be in Repository pattern file.
+    }
+}
+
+step 4)
+crete folder named Repositories in Models Folder and add EmployeeRepository.cs to it
+And also implement(inherite) interface (IEmployee) to this class.
+
+using RepositoryPattern.Models.Interfaces;
+namespace RepositoryPattern.Models.Repositories
+{
+    public class EmployeeRepository: IEmployee
+    {
+        public List<Employee> GetAllEmployee()
+        {
+            var employees = new List<Employee>()      
+            {
+                new Employee()
+                {
+                    ID = 1,
+                    Name = "Ali"
+                },
+                new Employee()
+                {
+                    ID = 2,
+                    Name = "Hassan"
+                },
+                new Employee()
+                {
+                    ID = 3,
+                    Name = "Hussain"
+                }
+            };
+            return employees;
+        }
+    }
+}
+
+step 5)
+Add prop of Interface (IEmployee) in HomeController and initilize it in constructor.
+
+using RepositoryPattern.Models.Interfaces;
+
+private readonly IEmployee empRepo;
+public HomeController(ILogger<HomeController> logger, IEmployee e)
+{
+    empRepo = e;
+    _logger = logger;
+}
+
+step 6)
+use empRepo to access data or write data to db.
+
+public IActionResult Index()
+{
+    return View(empRepo.GetAllEmployee());
+}
+
+step 7)
+In Index.cshtml
+@model List<Employee>                 //same as @model IEnumerable<Employee>
+
+@foreach (var e in Model)
+{
+    <tr>
+        <td>  @e.ID  </td>
+        <td>  @e.Name  </td>
+    </tr>
+    <br/>
+}
+
+step 8)
+-----------------------for VS Code .Net 5----------------------------
+
+In Program.cs
+using RepositoryPattern.Models.Interfaces;
+using RepositoryPattern.Models.Repositories;
+
+namespace RepositoryPattern
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
+}
+--------------------for Visual Studio-------------------------
+In Program.cs
+Replace code with
+
+using RepositoryPattern.Models.Interfaces;
+using RepositoryPattern.Models.Repositories;
+using Microsoft.AspNet.Hosting.WebApplication;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+//builder.Services.AddScoped<IEmployee, EmployeeRepository>();
+builder.Services.AddSingleton<IEmployee, EmployeeRepository>();     //don't forget to edit this line.
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+}
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.Run();
+
+
+step 9)
+-----------------only for VS Code .Net 5--------------------
+In startup.cs
+
+using RepositoryPattern.Models.Interfaces;
+using RepositoryPattern.Models.Repositories;
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddSingleton<IEmployee, EmployeeRepository>();          //add this line.
+}
+
+
+
