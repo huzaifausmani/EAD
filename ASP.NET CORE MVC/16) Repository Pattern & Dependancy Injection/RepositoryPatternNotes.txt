@@ -14,7 +14,7 @@ namespace RepositoryPattern.Models
 }
 
 step 3)
-create folder named Interfaces in Models and Interface to it.
+create folder named Interfaces in Models and add Interface to it.
 namespace RepositoryPattern.Models.Interfaces
 {
     public interface IEmployee

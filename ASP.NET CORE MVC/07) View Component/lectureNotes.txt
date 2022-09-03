@@ -49,3 +49,11 @@ namespace webapp.ViewComponents
 In Shared>Components>ProductsSummary>Default.cshtml :
 <h1>This is products view component</h1>
 <p>@Model</p>
+
+-------------------------------Step 5-------------------------------------
+In _ViewImports.cshtml:                   //most important step.
+
+@using webapp
+@using webapp.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, webapp

@@ -1,6 +1,12 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace smtp
 {
@@ -8,32 +14,51 @@ namespace smtp
     {
         static void Main(string[] args)
         {
-            string status = "";
-            try
-            {
-                string from="sender@gmail.com";
-                string password = "appPassword";//watch this to get your app password  https://youtu.be/J4CtP1MBtOE
-                string sub = "Subject of email";
-                string title="CourseShare";       //title of prjoect.
+            
+            // int choice = Int32.Parse(str);
 
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(from);
-                mail.To.Add("reciever@gmail.com");
-                mail.Subject = sub;
-                mail.Body = "<h1>"+title+"</h1><p>Message Body......</p>";
-                mail.IsBodyHtml = true;
-
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com",587);
-                smtp.Credentials = new System.Net.NetworkCredential(from,password);
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                status = "Mail Sent";
-            }
-            catch(Exception ex)
+            string choice = "";
+            do
             {
-                status = ex.Message;
-            }
-            Console.WriteLine(status);
+                Console.WriteLine("\n\nEnter 1 to send mail using SmtpClient.");
+                Console.WriteLine("Enter 2 to send mail using MailKit and MimeKit.");
+                Console.WriteLine("Enter 0 to terminate.");
+                Console.Write("Enter your choice: ");
+                choice = Console.ReadLine();
+                if(choice == "1")
+                {
+                    MailUsingSmtpClient musc = new MailUsingSmtpClient();
+                    if(musc.SendEmail("Hassan Raza","imhraza023@gmail.com","subject of email","This is my mail message."))
+                    {
+                        Console.WriteLine("Message has been sent.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There was an error in sending your mail. Please try again!");
+                    }
+                }
+                else if(choice == "2")
+                {
+                    MailUsingMailKit mumk = new MailUsingMailKit();
+                    if(mumk.SendEmail("Hassan Raza","imhraza023@gmail.com","subject of email","This is my mail message."))
+                    {
+                        Console.WriteLine("Message has been sent.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There was an error in sending your mail. Please try again!");
+                    }
+                }
+                else if(choice == "0")
+                {
+                    Console.WriteLine("OK then bye!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid choice!");
+                }
+            } while (choice!="0");
         }
     }
 }
