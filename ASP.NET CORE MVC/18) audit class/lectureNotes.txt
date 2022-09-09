@@ -1,0 +1,67 @@
+
+step 1)
+create a class   AuditClass.cs and add following properties to it.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace webapp.Models
+{
+    public abstract class AuditClass
+	{
+        public string createdBy { get; set; }
+        public string updatedBy { get; set; }
+        public DateTime createdDate { get; set; }
+        public DateTime updatedOn { get; set; }
+    }
+}
+
+step 2)
+Inherit AuditClass with all other classes given in the Models.
+
+using System.IO;
+using System.Data.Common;
+using System;
+using System.Linq;
+
+namespace webapp.Models
+{
+    public class User :AuditClass
+    {
+        public int ID { get; set; }         //EF will create primary key against this prop in db.
+        public string Name { get; set; }
+        public decimal Age { get; set; }
+        public double Height { get; set; }
+
+        public string add(User u)
+        {
+            UserContext db = new UserContext();
+
+            db.Users.Add(u);
+            
+            db.SaveChanges();
+            string str = $"User id of the user recently added: {u.ID}";
+            return str;
+        }
+    }
+}
+
+step 3)
+public IActionResult Index()
+{
+    User u = new User();
+    u.Name = "Hassan";
+    u.Age = 21;
+    u.Height = 7.8;
+    string NameFromSession = "Hassan Raza";
+    u.createdBy = NameFromSession;
+    u.updatedBy = NameFromSession;
+    u.createdDate = System.DateTime.Now;
+    u.updatedOn = System.DateTime.Now;
+    string str = u.add(u);
+    return View("Index",str);
+}
+

@@ -84,3 +84,57 @@ public void ConfigureServices(IServiceCollection services)
     services.AddAutoMapper(typeof(Startup));                 //must add this line.
 }
 
+
+
+-----------------------------For webapp2-----------------------------
+for different properties in User.cs and UserViewModel.cs
+
+namespace webapp2.Models
+{
+    public class User
+    {
+        public int ID { get; set; }
+        
+        public string FirstName { get; set; }
+        
+        public string LastName { get; set; }
+
+        public int Age { get; set; }
+    }
+}
+
+namespace webapp2.Models.ViewModels
+{
+    public class UserViewModel
+    {
+        public string FName { get; set; }
+        
+        public string LName { get; set; }  
+    }
+}
+
+>>>>>>>>>>>In UserProfile.cs
+
+using webapp2.Models.ViewModels;
+using webapp2.Models;
+using AutoMapper;                        //must have to add this line
+
+namespace webapp2.MappingConfiguration
+{
+    public class UserProfile : Profile
+    {
+        public UserProfile()
+        {
+            // CreateMap<User, UserViewModel>();
+
+            //For different properties in User.cs and UserViewModel.cs
+            CreateMap<User, UserViewModel>()
+                .ForMember(dest =>
+                dest.FName,
+                opt => opt.MapFrom(src => src.FirstName))
+                .ForMember(dest =>
+                dest.LName,
+                opt => opt.MapFrom(src => src.LastName));
+        }
+    }
+}
