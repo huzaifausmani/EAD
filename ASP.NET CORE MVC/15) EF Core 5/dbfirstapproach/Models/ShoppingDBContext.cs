@@ -12,8 +12,7 @@ namespace dbfirstapproach.Models
         {
         }
 
-        public ShoppingDBContext(DbContextOptions<ShoppingDBContext> options)
-            : base(options)
+        public ShoppingDBContext(DbContextOptions<ShoppingDBContext> options): base(options)
         {
         }
 

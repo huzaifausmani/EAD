@@ -1,0 +1,54 @@
+Step 1)
+Docker download:
+https://docs.docker.com/desktop/install/windows-install/
+
+step 2)
+Go to:
+https://docs.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+follow step 4 and 5 here
+
+step 3)
+Right click on docker icon in your taskbar -> switch to window container
+remove -> error(run given cmd on power shell (run as administrator)).
+
+step 4)
+Your PC will be restarted now.
+
+step 5)
+Right click on docker icon in your taskbar -> switch to window container
+
+step 6)
+https://docs.docker.com/samples/dotnetcore/
+In your project directory create a file named Dockerfile.txt now remove .txt from it because we want plain text file without any extension
+Now write following in that file yo just created. Don't forget to replace webappname with your WebApplication name.
+And also don't forget to replace 6 with 5 if you are using .NET 5
+
+# syntax=docker/dockerfile:1
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+WORKDIR /app
+    
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+    
+# Copy everything else and build
+COPY ./ ./
+RUN dotnet publish -c Release -o out
+    
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "webappname.dll"]
+
+step 7)                                           //Don't forget to replace webappname with your WebApplication name.
+docker build -t webappname .
+
+step 8)                                           //Don't forget to replace webappname with your WebApplication name.
+docker run -d -p 8080:80 --name myapp webappname
+
+step 9)
+Open docker and and run the image you just created as container.
+
+step 10)
+Browser> localhost:8080                           //Now webapp is up and running! Enjoy :)

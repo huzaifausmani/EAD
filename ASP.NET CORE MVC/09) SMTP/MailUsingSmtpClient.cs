@@ -19,7 +19,7 @@ namespace smtp
             {
                 string from="imhraza023@gmail.com";
                 string to = "imhraza023@gmail.com";
-                string password = "ikcbxbsemqoupcvk"; //watch this to get your app password  https://youtu.be/J4CtP1MBtOE
+                string password = "yourAppPassword"; //watch this to get your app password  https://youtu.be/J4CtP1MBtOE
                 string title="CourseShare";       //title of prjoect.
                 string sub = subject+" - Course Share";
 

@@ -1,0 +1,86 @@
+------------------------Auto Mappers-----------------------------
+AutoMappers are used when you want some properties of Class but not all as a DTO(data transfer object).
+Map 1 class over another is called AutoMapper.
+
+---------------------(step 1)---------------------
+Add package:
+vs> Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 11.0.0
+vs code> dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 11.0.0
+
+---------------------(step 2)---------------------
+>MappingConfiguration>UserProfile.cs
+
+using webapp.Models.ViewModels;
+using webapp.Models;
+using AutoMapper;                        //must have to add this line
+
+namespace webapp.MappingConfiguration
+{
+    public class UserProfile : Profile
+    {
+        public UserProfile()
+        {
+            CreateMap<User, UserViewModel>();
+        }
+    }
+}
+
+---------------------(step 3)---------------------
+>Model>ViewModels>UserViewModel.cs
+
+namespace webapp.Models.ViewModels
+{
+    public class UserViewModel
+    {
+        public string Name { get; set; }
+        
+        public int Age { get; set; }
+
+        public double Height { get; set; }    
+    }
+}
+
+---------------------(step 4)---------------------
+>HomeController.cs
+
+using webapp.Models;
+using webapp.Models.ViewModels;
+using AutoMapper;                        //must have to add this line
+
+namespace webapp.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        private readonly  IMapper imap;
+
+        public HomeController(ILogger<HomeController> logger, IMapper im)
+        {
+            _logger = logger;
+            imap = im;
+        }
+
+        public IActionResult Index()
+        {
+            User u = new User{ID = 1, Name="Hassan Raza", Age = 22, Height=6.8, Gender = "Male", Weight = 70};
+            UserViewModel uvm = imap.Map<UserViewModel>(u);
+            return View("Index",uvm);
+        }
+    }
+}
+
+---------------------(step 5)---------------------
+------------------------FOR .Net 6------------------------
+In Program.cs
+
+builder.services.AddAutoMapper(typeof(Program));            //must add this line.
+
+------------------------FOR .Net 5------------------------
+In Startup.cs
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews();
+    services.AddAutoMapper(typeof(Startup));                 //must add this line.
+}
+
