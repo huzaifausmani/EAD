@@ -6,6 +6,13 @@ in> Views/_ViewImports.cshtml
 @using webapp.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+-------------------Taghelpers we used----------------------------
+//asp-for
+//asp-controller
+//asp-action      
+//asp-route-id
+
+
 step 2)
 //asp-for="Name" in all forms
 <form method="post" action="/Student/studentform">

@@ -1,0 +1,16 @@
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.csprojAssemblyReference.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.GeneratedMSBuildEditorConfig.editorconfig
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.AssemblyInfoInputs.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.AssemblyInfo.cs
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.csproj.CoreCompileInputs.cache
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.exe
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.deps.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.runtimeconfig.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.runtimeconfig.dev.json
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\ref\webapp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\bin\Debug\net5.0\webapp.pdb
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\ref\webapp.dll
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.pdb
+D:\6th semester\Enterprise Application Development\EAD\ASP.NET CORE MVC\20) Sync vs Aync\webapp\obj\Debug\net5.0\webapp.genruntimeconfig.cache

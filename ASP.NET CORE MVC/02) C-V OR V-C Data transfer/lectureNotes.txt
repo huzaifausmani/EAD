@@ -1,7 +1,7 @@
 
 There are 3 ways to send data from controller to View.
 1) using ViewBag.x
-2) using ViewData["data"]
+2) using ViewData["data"]             //faster than ViewBag.
 3) using Model.
 
 -----------------------------------Step 1-----------------------------------
