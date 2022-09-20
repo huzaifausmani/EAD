@@ -1,0 +1,16 @@
+Synchronous:
+It means that you can execute one thing at a time.
+
+Asynchronous:
+It means that you can execute multiple things at a time.
+You don't have to wait for other tasks while the execution of one task. 
+Blocks the process till the operation completes.
+
+Where to do asynchronous:
+I/O bounds:
+File Handling, DB access, requesting data from a network.
+
+CPU bounds:
+Performing an expensive calclations.
+
+

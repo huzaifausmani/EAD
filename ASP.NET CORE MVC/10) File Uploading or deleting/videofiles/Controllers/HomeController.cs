@@ -74,7 +74,7 @@ namespace videofiles.Controllers
                             bool flag = v.insertData(v);
                             if(flag)
                             {
-                                ViewBag.Message += string.Format("<b>{1}</b> uploaded.<br />", fileName);
+                                ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
                             }
                             else
                             {
